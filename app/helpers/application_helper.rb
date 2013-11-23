@@ -12,4 +12,8 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def resource_name
+    :user
+  end
+
 end

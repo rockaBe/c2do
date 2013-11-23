@@ -21,3 +21,15 @@
 
 en:
   hello: "Hello world"
+  model:
+    task: 'Task'
+    tasks: 'Tasks'
+    todo: 'Todo'
+    todos: 'Todos'
+    list: 'List'
+    lists: 'Lists'
+    list_subscription: 'subscribed list'
+    list_subscriptions: 'subscribed lists'
+    role: 'Role'
+    roles: 'Roles'
+    users: 'Users'

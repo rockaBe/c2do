@@ -1,0 +1,15 @@
+= simple_form_for(@task) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :position
+    = f.input :due_at
+    = f.input :shared_state
+    = f.input :progress_state
+    = f.input :shared_state
+    = f.input :predue_at
+    = f.input :overdue_at
+
+  .form-actions
+    = f.button :submit

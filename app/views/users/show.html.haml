@@ -1,5 +1,9 @@
 %h3 User
 %p
-  User: #{@user.name}
+	User: #{@user.name}
 %p
-  Email: #{@user.email if @user.email}
+	Email: #{@user.email if @user.email}
+
+%ul
+	%li
+		= link_to t('model.lists'), user_lists_path(@user)

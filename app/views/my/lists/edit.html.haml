@@ -1,0 +1,7 @@
+%h1 Editing list
+
+= render 'form'
+
+= link_to 'Show', list_path(@list)
+\|
+= link_to 'Back', user_lists_path(current_user)

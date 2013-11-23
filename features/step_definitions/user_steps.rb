@@ -1,12 +1,12 @@
 ### UTILITY METHODS ###
 
 def create_visitor
-  @visitor ||= { :name => "Testy McUserton", :email => "example@example.com",
-    :password => "changeme", :password_confirmation => "changeme" }
+  @visitor ||= { :name => "Test User", :email => "person@example.com",
+    :password => "password", :password_confirmation => "password" }
 end
 
 def find_user
-  @user ||= User.first conditions: {:email => @visitor[:email]}
+  @user ||= User.where(:email => @visitor[:email]).first
 end
 
 def create_unconfirmed_user
@@ -23,7 +23,7 @@ def create_user
 end
 
 def delete_user
-  @user ||= User.first conditions: {:email => @visitor[:email]}
+  @user ||= User.where(:email => @visitor[:email]).first
   @user.destroy unless @user.nil?
 end
 
@@ -166,11 +166,11 @@ Then /^I should see a missing password message$/ do
 end
 
 Then /^I should see a missing password confirmation message$/ do
-  page.should have_content "Passworddoesn't match confirmation"
+  page.should have_content "Password confirmationdoesn't match Password"
 end
 
 Then /^I should see a mismatched password message$/ do
-  page.should have_content "Passworddoesn't match confirmation"
+  page.should have_content "Password confirmationdoesn't match Password"
 end
 
 Then /^I should see a signed out message$/ do
