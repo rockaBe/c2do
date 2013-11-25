@@ -1,8 +1,7 @@
 ### UTILITY METHODS ###
 
 def create_visitor
-  @visitor ||= { :name => "Test User", :email => "person@example.com",
-    :password => "password", :password_confirmation => "password" }
+  @visitor ||= FactoryGirl.attributes_for(:cucumber_user)
 end
 
 def find_user
@@ -19,7 +18,7 @@ end
 def create_user
   create_visitor
   delete_user
-  @user = FactoryGirl.create(:user, email: @visitor[:email])
+  @user = FactoryGirl.create(:cucumber_user)
 end
 
 def delete_user
