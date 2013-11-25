@@ -19,4 +19,12 @@ FactoryGirl.define do
       user.lists { |lists| [lists.association(:list_subscription)] }
     end
   end
+
+  factory :cucumber_user, class: "User" do
+    name                    "Test User"
+    email                   "person@example.com"
+    password                "password"
+    password_confirmation   {|n| n.password}
+    confirmed_at            Time.now
+  end
 end
