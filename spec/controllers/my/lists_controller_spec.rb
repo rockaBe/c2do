@@ -6,7 +6,7 @@ describe My::ListsController do
     @user = FactoryGirl.create(:user)
     @user.list_subscriptions.push(FactoryGirl.create(:list_subscription))
     @list = @user.lists.first
-    controller.stub(:current_user).and_return(@user)
+    sign_in @user
   end
 
   # This should return the minimal set of values that should be in the session

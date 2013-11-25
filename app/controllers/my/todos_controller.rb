@@ -1,6 +1,7 @@
 class My::TodosController < ApplicationController
   before_action :set_todo, only: [:show, :edit, :update, :destroy]
   before_action :set_list, only: [:index, :new, :create]
+  # before_action :authenticate_user!
 
   # GET /todos
   # GET /todos.json

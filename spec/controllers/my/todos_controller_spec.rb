@@ -4,7 +4,7 @@ describe My::TodosController do
 
   before(:each) do
     @user = FactoryGirl.create(:user)
-    controller.stub(:current_user).and_return @user
+    sign_in @user
   end
 
   let(:todo) { FactoryGirl.create(:todo) }

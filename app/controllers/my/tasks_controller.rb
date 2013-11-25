@@ -1,6 +1,7 @@
 class My::TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :set_todo, only: [:index, :create, :new]
+  # before_action :authenticate_user!
 
   # GET /tasks
   # GET /tasks.json

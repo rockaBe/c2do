@@ -8,7 +8,7 @@ require 'spec_helper'
   before(:each) do
     @user = FactoryGirl.create(:user)
     @todo = FactoryGirl.create(:todo)
-    controller.stub(:current_user).and_return(@user)
+    sign_in @user
   end
 
   describe "GET index" do
