@@ -1,20 +1,9 @@
-- if request.parameters[:action] == "edit" 
-	= simple_form_for(@list) do |f|
-		= f.error_notification
+= simple_form_for([:my, @list]) do |f|
+	= f.error_notification
 
-		.form-inputs
-			= f.input :name
-			= f.input :position
+	.form-inputs
+		= f.input :name
+		= f.input :position
 
-		.form-actions
-			= f.button :submit
-- else
-	= simple_form_for([current_user, @list]) do |f|
-		= f.error_notification
-
-		.form-inputs
-			= f.input :name
-			= f.input :position
-
-		.form-actions
-			= f.button :submit
+	.form-actions
+		= f.button :submit

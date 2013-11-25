@@ -6,4 +6,6 @@
 
 %ul
 	%li
-		= link_to t('model.lists'), user_lists_path(@user)
+		- if current_user && @user == current_user
+			= link_to t('model.lists'), my_lists_path
+			

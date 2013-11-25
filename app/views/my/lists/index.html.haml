@@ -12,10 +12,11 @@
     %tr
       %td= list.name
       %td= list.position
-      %td= link_to 'Show', list_path(list)
-      %td= link_to 'Edit', edit_list_path(list)
-      %td= link_to 'Destroy', list_path(list), :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Show', my_list_path(list)
+      %td= link_to 'Edit', edit_my_list_path(list)
+      %td= link_to 'Destroy', my_list_path(list), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New List', new_user_list_path
+= link_to 'New List', new_my_list_path
+

@@ -1,5 +1,3 @@
-%p#notice= notice
-
 %p
   %b Name:
   = @list.name
@@ -11,6 +9,6 @@
   - @todos.each do |todo|
     %li= "#{todo.name} (#{todo.tasks.count})"
 
-= link_to 'Edit', edit_list_path(@list)
+= link_to 'Edit', edit_my_list_path(@list)
 \|
-= link_to 'Back', user_lists_path(current_user)
+= link_to 'Back', my_lists_path
