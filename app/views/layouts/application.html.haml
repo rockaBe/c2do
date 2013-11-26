@@ -5,7 +5,7 @@
     %title= content_for?(:title) ? yield(:title) : 'C2do'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'C2do'}"}
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
-    -#  Modernizr is required for Zurb Foundation 4
+    -#  Modernizr is required for Zurb Foundation 5
     = javascript_include_tag "vendor/custom.modernizr"
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
@@ -14,4 +14,7 @@
       = render 'layouts/navigation'
     %main{:role => "main"}
       = render 'layouts/messages'
-      = yield
+      %section.large-8.columns
+        = yield
+      %aside.large-4.columns
+        = content_for(:sidebar)

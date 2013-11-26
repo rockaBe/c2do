@@ -1,11 +1,11 @@
--# navigation styled for Zurb Foundation 4
+-# navigation styled for Zurb Foundation 5
 %nav.top-bar
   %ul.title-area
     %li.name
-      = link_to 'Home', root_path
+      %h1= link_to 'Home', root_path
     %li.toggle-topbar.menu-icon
       %a{:href => "#"}
         %span Menu
-  .top-bar-section
+  .top-bar-section.right
     %ul
       = render 'layouts/navigation_links'
