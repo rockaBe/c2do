@@ -10,7 +10,7 @@
 
   - @lists.each do |list|
     %tr
-      %td= list.name
+      %td.icon-progress-0= list.name
       %td= list.position
       %td= link_to 'Show', list_path(list)
       %td= link_to 'Edit', edit_list_path(list)

@@ -1,10 +1,1 @@
-%p
-  %b Name:
-  = @todo.name
-%p
-  %b Position:
-  = @todo.position
-
-= link_to 'Edit', edit_todo_path(@todo)
-\|
-= link_to 'Back', todos_path
+= render 'todo'

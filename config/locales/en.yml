@@ -20,16 +20,24 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
   model:
-    task: 'Task'
-    tasks: 'Tasks'
-    todo: 'Todo'
-    todos: 'Todos'
-    list: 'List'
-    lists: 'Lists'
+    task: 'task'
+    tasks: 'tasks'
+    new_task: 'new task'
+    todo: 'todo'
+    todos: 'todos'
+    new_todo: 'new todo'
+    list: 'list'
+    lists: 'lists'
+    new_list: 'new list'
     list_subscription: 'subscribed list'
     list_subscriptions: 'subscribed lists'
-    role: 'Role'
-    roles: 'Roles'
-    users: 'Users'
+    role: 'role'
+    roles: 'roles'
+    user: 'user'
+    users: 'users'
+  base:
+    items_for_list: "%{item} for %{list}"
+  confirmations:
+    deletion: "Are you sure you want to delete the %{model} with the name %{name}?"
+

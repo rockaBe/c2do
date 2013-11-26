@@ -1,14 +1,20 @@
-%p
-  %b Name:
-  = @list.name
-%p
-  %b Position:
-  = @list.position
+%h1= @list.name
 
-%ul
+%h3= "#{t('base.items_for_list', item: t('model.todos'), list: t('model.list'))} (#{@todos.size})"
+%ol
+  %li.create-link
+    = link_to t('model.new_todo'), new_my_list_todo_path(@list), class: 'icon-plus-circled'
+  %li.divider
+    %hr
   - @todos.each do |todo|
-    %li= "#{todo.name} (#{todo.tasks.count})"
+    = render partial: 'my/todos/todo', locals: {todo: todo}
+  %li.divider
+    %hr
+  - if @todos.size > 5
+    %li.create-link
+      = link_to t('model.new_todo'), new_my_list_todo_path(@list), class: 'icon-plus-circled'
+    
 
-= link_to 'Edit', edit_my_list_path(@list)
+= link_to 'edit', edit_my_list_path(@list)
 \|
-= link_to 'Back', my_lists_path
+= link_to 'back', my_lists_path
