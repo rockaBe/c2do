@@ -36,8 +36,23 @@ en:
     roles: 'roles'
     user: 'user'
     users: 'users'
+
   base:
     items_for_list: "%{item} for %{list}"
+
   confirmations:
     deletion: "Are you sure you want to delete the %{model} with the name %{name}?"
+
+  navigation:
+    edit_account: "Edit my account"
+    logout: "Logout"
+    admin: "Admin settings"
+    login: "Login"
+    sign_up: "Sign up"
+
+  actions:
+    edit: edit
+    delete: delete
+    show: show
+    back: back
 
