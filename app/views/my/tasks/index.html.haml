@@ -1,0 +1,33 @@
+%h1 Listing tasks
+
+%table
+  %tr
+    %th Name
+    %th Position
+    %th Due at
+    %th Shared state
+    %th Progress state
+    %th Shared state
+    %th Predue at
+    %th Overdue at
+    %th
+    %th
+    %th
+
+  - @tasks.each do |task|
+    %tr
+      %td= task.name
+      %td= task.position
+      %td= task.due_at
+      %td= task.shared_state
+      %td= task.progress_state
+      %td= task.shared_state
+      %td= task.predue_at
+      %td= task.overdue_at
+      %td= link_to 'Show', task
+      %td= link_to 'Edit', edit_my_task_path(task)
+      %td= link_to 'Destroy', task, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Task', new_my_todo_task_path(@todo)

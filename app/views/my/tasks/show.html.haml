@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @task.name
+%p
+  %b Position:
+  = @task.position
+%p
+  %b Due at:
+  = @task.due_at
+%p
+  %b Shared state:
+  = @task.shared_state
+%p
+  %b Progress state:
+  = @task.progress_state
+%p
+  %b Shared state:
+  = @task.shared_state
+%p
+  %b Predue at:
+  = @task.predue_at
+%p
+  %b Overdue at:
+  = @task.overdue_at
+
+= link_to 'Edit', edit_task_path(@task)
+\|
+= link_to 'Back', tasks_path

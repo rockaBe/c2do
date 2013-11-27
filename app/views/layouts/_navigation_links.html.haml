@@ -1,0 +1,13 @@
+%li.divider
+- if user_signed_in?
+  %li= link_to t('navigation.edit_account'), edit_user_registration_path
+  %li.divider
+  %li= link_to t('navigation.logout'), destroy_user_session_path, :method=>'delete'
+  - if current_user.has_role? :admin
+    %li.divider
+    %li= link_to t('navigation.admin'), users_path
+
+- else
+  %li= link_to t('navigation.login'), new_user_session_path
+  %li.divider
+  %li= link_to t('navigation.sign_up'), new_user_registration_path

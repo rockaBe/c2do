@@ -1,0 +1,9 @@
+= simple_form_for([:my, @list]) do |f|
+	= f.error_notification
+
+	.form-inputs
+		= f.input :name
+		= f.input :position
+
+	.form-actions
+		= f.button :submit

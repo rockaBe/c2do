@@ -1,0 +1,8 @@
+%li
+  %span.todo-name 
+    = todo.name
+  %span.action-links
+    %span.edit-link 
+      = link_to 'edit', edit_my_todo_path(todo), class: "icon-edit-circled"
+    %span.delete-link
+      = link_to 'delete', my_todo_path(todo), method: :delete, data: { confirm: t('confirmations.deletion', model: t('model.todo'), name: todo.name) }, class: 'icon-delete-circled'
