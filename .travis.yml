@@ -12,6 +12,9 @@ branches:
   only:
     - master
 
+before_script:
+  - mysql -e 'create database myapp_test;'
+
 # uncomment this line if your project needs to run something other than `rake`:
 script: bundle exec rspec spec
 
