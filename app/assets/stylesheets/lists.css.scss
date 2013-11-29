@@ -2,8 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import 'foundation_mixins_only';
 
-.balanced_row {
-	@include grid-row($behavior: nest-collapse);
+form .row {
+	max-width: 100%;
 }

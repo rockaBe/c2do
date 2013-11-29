@@ -17,14 +17,14 @@ SimpleForm.setup do |config|
     ## Inputs
     b.wrapper tag: :div, class: 'large-12 small-12' do |c|
       c.wrapper tag: :div, class: 'row collapse' do |d|
-        d.wrapper tag: :div, class: 'large-4 small-4 columns' do |e|
+        d.wrapper tag: :div, class: 'large-2 small-4 columns' do |e|
           e.use :label, wrap_with: {tag: :span, class: :prefix}
         end
-        d.wrapper tag: :div, class: 'large-8 small-8 columns' do |e|
+        d.wrapper tag: :div, class: 'large-10 small-8 columns' do |e|
           e.use :input
         end
       end
-      c.wrapper tag: :div, class: 'row collapse' do |d|
+      c.wrapper tag: :div, class: 'balanced_row collapse' do |d|
         d.wrapper tag: :div, class: 'large-12 small-12 columns' do |e|
           e.use :hint,  wrap_with: { tag: :span, class: :hint }
           e.use :error, wrap_with: { tag: :small, class: :error }
