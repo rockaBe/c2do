@@ -2,16 +2,14 @@
 
 %table
   %tr
-    %th Name
-    %th Position
-    %th
-    %th
-    %th
+    %th{width: "60%"} Name
+    %th{width: "13%"}
+    %th{width: "13%"}
+    %th{width: "13%"}
 
   - @lists.each do |list|
     %tr
       %td.icon-progress-2= list.name
-      %td= list.position
       %td= link_to t('actions.show'), my_list_path(list), class: 'icon-info-circled'
       %td= link_to t('actions.edit'), edit_my_list_path(list), class: 'icon-edit-circled'
       %td= link_to t('actions.delete'), my_list_path(list), :method => :delete, :data => { :confirm => t('confirmations.deletion', model: t('model.list'), name: list.name) }, class: 'icon-delete-circled'

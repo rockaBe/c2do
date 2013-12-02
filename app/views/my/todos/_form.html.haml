@@ -1,9 +1,9 @@
-= simple_form_for(@todo) do |f|
+= simple_form_for([:my, @list, @todo]) do |f|
   = f.error_notification
 
   .form-inputs
     = f.input :name
-    = f.input :position
+    = f.input :due_at, class: "with-picker"
 
   .form-actions
     = f.button :submit

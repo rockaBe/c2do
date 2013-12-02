@@ -1,8 +1,15 @@
-%li
-  %span.todo-name 
-    = todo.name
-  %span.action-links
-    %span.edit-link 
-      = link_to 'edit', edit_my_todo_path(todo), class: "icon-edit-circled"
-    %span.delete-link
-      = link_to 'delete', my_todo_path(todo), method: :delete, data: { confirm: t('confirmations.deletion', model: t('model.todo'), name: todo.name) }, class: 'icon-delete-circled'
+-#%li
+-#  %span.todo-name 
+-#    = todo.name
+-#  %span.action-links
+-#    %span.edit-link 
+-#      = link_to 'edit', edit_my_todo_path(todo), class: "icon-edit-circled"
+-#    %span.delete-link
+-#      = link_to 'delete', my_todo_path(todo), method: :delete, data: { confirm: t('confirmations.deletion', model: t('model.todo'), name: todo.name) }, class: 'icon-delete-circled'
+
+- todo ||= @todo
+%tr
+	%td= todo.name
+	%td= link_to 'Show', my_todo_path(todo)
+	%td= link_to 'Edit', edit_my_todo_path(todo), class: "icon-edit-circled"
+	%td= link_to 'Destroy', my_todo_path(todo), method: :delete, data: { :confirm => 'Are you sure?' }, class: "icon-delete-circled"

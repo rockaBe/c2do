@@ -1,19 +1,22 @@
 %h1= @list.name
 
-%h3= "#{t('base.items_for_list', item: t('model.todos'), list: t('model.list'))} (#{@todos.size})"
-%ol
-  %li.create-link
-    = link_to t('model.new_todo'), new_my_list_todo_path(@list), class: 'icon-plus-circled'
-  %li.divider
-    %hr
+%table.large-12
+  %tr
+    %th{width: "10%"} State
+    %th{width: "59%"} Name
+    %th{width: "10%"}
+    %th{width: "10%"}
+    %th{width: "11%"}
+
+  = link_to t('model.new_todo'), new_my_list_todo_path(@list), class: 'icon-plus-circled'
   - @todos.each do |todo|
-    = render partial: 'my/todos/todo', locals: {todo: todo}
-  %li.divider
-    %hr
-  - if @todos.size > 5
-    %li.create-link
-      = link_to t('model.new_todo'), new_my_list_todo_path(@list), class: 'icon-plus-circled'
-    
+    %tr
+      %td= todo.progress_state
+      %td.icon-progress-2= todo.name
+      %td= link_to t('actions.show'), my_todo_path(todo), class: 'icon-info-circled'
+      %td= link_to t('actions.edit'), edit_my_todo_path(todo), class: 'icon-edit-circled'
+      %td= link_to t('actions.delete'), my_todo_path(todo), :method => :delete, :data => { :confirm => t('confirmations.deletion', model: t('model.list'), name: todo.name) }, class: 'icon-delete-circled'
+
 
 = link_to 'edit', edit_my_list_path(@list)
 \|
