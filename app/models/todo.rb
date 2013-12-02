@@ -9,4 +9,6 @@ class Todo < ActiveRecord::Base
 	validates_presence_of :list_id, :creator_user_id, :name
 	# validates_numericality_of :list_id, :creator_user_id, :assigned_user_id
 
+	STATES = %w(none urgent shared in_progress blocked overdue finished)
+
 end

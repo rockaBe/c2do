@@ -6,7 +6,7 @@ class My::TodosController < ApplicationController
   # GET /todos
   # GET /todos.json
   def index
-    @todos = Todo.all
+    @todos = @list.todos.includes(:tasks).all
   end
 
   # GET /todos/1
@@ -27,7 +27,6 @@ class My::TodosController < ApplicationController
   # POST /todos.json
   def create
     @todo = Todo.new(todo_params)
-    puts " >>>>>>>>>>>>>>>>> Todo.count (before): #{Todo.count}"
     respond_to do |format|
       if @todo.save
         format.html { redirect_to [:my, @todo], notice: 'Todo was successfully created.' }
@@ -37,7 +36,6 @@ class My::TodosController < ApplicationController
         format.json { render json: @todo.errors, status: :unprocessable_entity }
       end
     end
-    puts " >>>>>>>>>>>>>>>>> Todo.count (after): #{Todo.count}"
   end
 
   # PATCH/PUT /todos/1

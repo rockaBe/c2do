@@ -39,11 +39,13 @@ en:
 
   base:
     items_for_list: "%{item} for %{list}"
+    app_description: simple 2do list
 
   confirmations:
     deletion: "Are you sure you want to delete the %{model} with the name %{name}?"
 
   navigation:
+    base: Navigation
     edit_account: "Edit my account"
     logout: "Logout"
     admin: "Admin settings"
