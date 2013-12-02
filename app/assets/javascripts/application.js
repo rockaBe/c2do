@@ -16,5 +16,7 @@
 //= require turbolinks
 //= require foundation
 //= require_tree .
+//= require foundation-datetimepicker
 
 $(function(){ $(document).foundation(); });
+

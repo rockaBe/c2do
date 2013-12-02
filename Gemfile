@@ -18,8 +18,12 @@ gem 'jbuilder', '~> 1.2'
 gem 'acts_as_list'
 gem 'cancan'
 gem 'compass-rails', '~> 2.0.alpha.0'
+
+# alternatively try using sorcery <https://github.com/NoamB/sorcery> for simple authentication
+# gem 'sorcery' 
 gem 'devise'
 gem 'devise_invitable'
+
 gem 'figaro'
 gem 'haml-rails'
 gem 'mysql2'
@@ -29,6 +33,7 @@ gem 'simple_form'
 # needed to use master, because 4.3.2 doesnt support offcanvas
 # gem 'zurb-foundation'
 gem 'foundation-rails'
+gem 'foundation-datetimepicker-rails'
 
 # only available in Development
 group :development do
