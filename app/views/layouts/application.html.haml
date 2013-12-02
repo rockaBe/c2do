@@ -6,15 +6,38 @@
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'C2do'}"}
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     -#  Modernizr is required for Zurb Foundation 5
-    = javascript_include_tag "vendor/custom.modernizr"
-    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = javascript_include_tag "vendor/modernizr"
+    %link{ href: '/assets/favicon.png', rel: 'shortcut icon', type: 'image/png' }/
+    
     = csrf_meta_tags
   %body
-    %header
-      = render 'layouts/navigation'
-    %main{:role => "main"}
-      = render 'layouts/messages'
-      %section.large-8.columns
-        = yield
-      %aside.large-4.columns
-        = content_for(:sidebar)
+    .off-canvas-wrap
+      .inner-wrap
+        %nav.tab-bar.data-topbar
+          %section.left-small
+            %a.left-off-canvas-toggle.menu-icon
+              %span
+          %section.middle.tab-bar-section
+            %h1.title  
+              = image_tag "c2do-32.png", class: 'app-logo'
+              = t('base.app_description')
+          // %section.right-small
+          //   %a.right-off-canvas-toggle.menu-icon
+          //     %span
+          // %li.toggle-topbar.menu-icon
+          //   %a{:href => "#"}
+          //     %span Menu
+        
+        = render 'layouts/left_off_canvas_menu'
+        = render 'layouts/right_off_canvas_menu'
+
+        %section.main-section{role: "main"}
+          = render 'layouts/messages'
+          .large-12.columns
+            = yield
+
+        / close the off-canvas menu
+        %a.exit-off-canvas
+    -# Workaround to get foundation.js esp. FastClick working
+    -# TRADEOFF: disables turbolinks
+    = javascript_include_tag "application", "data-turbolinks-track" => true

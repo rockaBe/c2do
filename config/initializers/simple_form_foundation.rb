@@ -24,7 +24,7 @@ SimpleForm.setup do |config|
           e.use :input
         end
       end
-      c.wrapper tag: :div, class: 'balanced_row collapse' do |d|
+      c.wrapper tag: :div, class: 'row collapse' do |d|
         d.wrapper tag: :div, class: 'large-12 small-12 columns' do |e|
           e.use :hint,  wrap_with: { tag: :span, class: :hint }
           e.use :error, wrap_with: { tag: :small, class: :error }
