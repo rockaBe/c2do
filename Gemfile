@@ -9,6 +9,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
+# when problems with turbolinks and other gems e.g. foundation occur
+# try using jquery-turbolinks see <https://github.com/kossnocorp/jquery.turbolinks>
+gem 'jquery-turbolinks'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
@@ -23,7 +26,9 @@ gem 'mysql2'
 gem 'puma'
 gem 'rolify'
 gem 'simple_form'
-gem 'zurb-foundation'
+# needed to use master, because 4.3.2 doesnt support offcanvas
+# gem 'zurb-foundation'
+gem 'foundation-rails'
 
 # only available in Development
 group :development do
