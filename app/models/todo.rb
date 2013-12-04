@@ -11,4 +11,5 @@ class Todo < ActiveRecord::Base
 
 	STATES = %w(none urgent shared in_progress blocked overdue finished)
 
+	default_scope { order( position: :asc) }
 end

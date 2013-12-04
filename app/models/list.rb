@@ -9,4 +9,5 @@ class List < ActiveRecord::Base
 	has_many :todos
 	has_many :todo_tasks, through: :todos, source: :tasks, class_name: "Task"
 	
+	default_scope { order(position: :asc) }
 end

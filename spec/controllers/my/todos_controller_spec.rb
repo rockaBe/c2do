@@ -59,7 +59,7 @@ describe My::TodosController do
 
       it "redirects to the created todo" do
         post :create, { :todo => todo_attributes, list_id: todo.list }, valid_session
-        response.should redirect_to([:my, Todo.last])
+        response.should redirect_to([:my, Todo.unscoped.last])
       end
     end
 

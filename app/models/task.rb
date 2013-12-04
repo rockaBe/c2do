@@ -6,4 +6,8 @@ class Task < ActiveRecord::Base
 	
 	delegate :list, to: :todo, allow_nil: true
 
+	validates_presence_of :name, :creator_user
+
+	default_scope { order( position: :asc ) }
+
 end

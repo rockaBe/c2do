@@ -42,7 +42,7 @@ require 'spec_helper'
 
       it "redirects to the created task" do
         post :create, {:task => valid_attributes, todo_id: @todo}, valid_session
-        response.should redirect_to([:my, Task.last])
+        response.should redirect_to([:my, Task.unscoped.last])
       end
     end
 

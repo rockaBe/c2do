@@ -58,7 +58,7 @@ describe My::ListsController do
 
       it "redirects to the created list" do
         post :create, {:list => FactoryGirl.attributes_for(:list)}, valid_session
-        response.should redirect_to([:my, List.last])
+        response.should redirect_to([:my, List.unscoped.last])
       end
     end
 

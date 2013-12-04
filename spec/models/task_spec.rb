@@ -12,6 +12,9 @@ describe Task do
   		overdue_at: 			24.hours.from_now
   	}
 
+    it { should validate_presence_of :name }
+    it { should validate_presence_of :creator_user_id }
+
   	it "should create a new instance given a valid attribute" do
   	  @task = Task.create!(@attr)
   	  @task.should be_valid

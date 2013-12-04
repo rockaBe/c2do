@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe Todo do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should validate_presence_of :name }
+  it { should validate_presence_of :creator_user_id }
+
 end
