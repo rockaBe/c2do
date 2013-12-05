@@ -13,7 +13,7 @@ class My::ListsController < ApplicationController
   # GET /lists/1
   # GET /lists/1.json
   def show
-    @todos = @list.todos
+    @todos = @list.todos.includes(:tasks)
   end
 
   # GET /lists/new

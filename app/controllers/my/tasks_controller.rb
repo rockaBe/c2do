@@ -21,6 +21,7 @@ class My::TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
+    @todo = @task.todo
   end
 
   # POST /tasks
@@ -67,10 +68,12 @@ class My::TasksController < ApplicationController
     def set_task
       @task = Task.includes(:todo).find(params[:id])
       @todo = @task.todo
+      @list = @todo.list
     end
 
     def set_todo
-      @todo = Todo.find(params[:todo_id])
+      @todo = Todo.includes(:list).find(params[:todo_id])
+      @list = @todo.list
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
