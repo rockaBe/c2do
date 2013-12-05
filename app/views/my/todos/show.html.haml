@@ -1,8 +1,32 @@
-%table
+= link_to t('navigation.back_to', name: @list.name), my_list_path(@list), class: 'button'
+
+
+%table.large-12
   %tr
     %th Name
     %th
     %th
     %th
   %tr 
-    = render 'todo'
+    = render 'todo', do_not_display_show_link: true
+
+%table.large-12
+  - if @todo.tasks.any?
+    %tr
+      %th{width: "5%"} Position
+      %th{width: "10%"} State
+      %th{width: "54%"} Name
+      %th{width: "10%"}
+      %th{width: "10%"}
+      %th{width: "11%"}
+
+  - @todo.tasks.each do |task|
+    %tr
+      %td= task.position
+      %td= task.progress_state
+      %td.icon-progress-2= task.name
+      %td= link_to t('actions.show'), my_task_path(task), class: 'icon-info-circled'
+      %td= link_to t('actions.edit'), edit_my_task_path(task), class: 'icon-edit-circled'
+      %td= link_to t('actions.delete'), my_task_path(task), :method => :delete, :data => { :confirm => t('confirmations.deletion', model: t('model.task'), name: task.name) }, class: 'icon-delete-circled'
+  %tr
+    %td{colspan: 6}= link_to t('model.new_task'), new_my_todo_task_path(@todo), class: 'icon-plus-circled'

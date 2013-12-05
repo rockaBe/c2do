@@ -1,4 +1,4 @@
-%h1 Listing tasks
+%h1= "#{link_to @list.name, my_list_path(@list)} >> #{@todo.name}"
 
 %table
   %tr
@@ -7,7 +7,6 @@
     %th Due at
     %th Shared state
     %th Progress state
-    %th Shared state
     %th Predue at
     %th Overdue at
     %th
@@ -21,12 +20,11 @@
       %td= task.due_at
       %td= task.shared_state
       %td= task.progress_state
-      %td= task.shared_state
       %td= task.predue_at
       %td= task.overdue_at
-      %td= link_to 'Show', task
+      %td= link_to 'Show', [:my, task]
       %td= link_to 'Edit', edit_my_task_path(task)
-      %td= link_to 'Destroy', task, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Destroy', [:my, task], :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

@@ -9,8 +9,8 @@
       = f.input :shared_state
       = f.input :progress_state
       = f.input :shared_state
-      = f.input :predue_at
-      = f.input :overdue_at, as: :string, input_html: {data: {start_date: @task.overdue_at || 4.hours.from_now}}
+      = f.input :predue_at, as: :string, input_html: {data: {start_date: @task.predue_at || 2.hours.from_now }}
+      = f.input :overdue_at, as: :string, input_html: {data: {start_date: @task.overdue_at || 28.hours.from_now}}
   
     .form-actions
       = f.button :submit
@@ -26,8 +26,8 @@
       = f.input :shared_state
       = f.input :progress_state
       = f.input :shared_state
-      = f.input :predue_at
-      = f.input :overdue_at, as: :string, input_html: {data: {start_date: @task.overdue_at || 4.hours.from_now}}
+      = f.input :predue_at, as: :string, input_html: {data: {start_date: @task.predue_at || 2.hours.from_now }}
+      = f.input :overdue_at, as: :string, input_html: {data: {start_date: @task.overdue_at || 28.hours.from_now}}
   
     .form-actions
       = f.button :submit

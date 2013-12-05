@@ -1,4 +1,4 @@
-%p#notice= notice
+= @list.name
 
 %p
   %b Name:
@@ -16,15 +16,12 @@
   %b Progress state:
   = @task.progress_state
 %p
-  %b Shared state:
-  = @task.shared_state
-%p
   %b Predue at:
   = @task.predue_at
 %p
   %b Overdue at:
   = @task.overdue_at
 
-= link_to 'Edit', edit_task_path(@task)
+= link_to 'Edit', edit_my_task_path(@task)
 \|
-= link_to 'Back', tasks_path
+= link_to 'Back', my_todo_path(@todo)

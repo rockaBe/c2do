@@ -1,23 +1,32 @@
+= link_to t('my_lists'), my_lists_path, class: 'button'
+
 %h1= @list.name
+.large-6.columns
+  %h2= t('model.todos')
+  .large2= "total: #{@todos.size}"
+/ .large-6.columns
+/   %h2= t('model.tasks')
+/   .large2= "total: #{@tasks.size}"
 
 %table.large-12
   %tr
+    %th{width: "5%"} Position
     %th{width: "10%"} State
-    %th{width: "59%"} Name
+    %th{width: "54%"} Name
     %th{width: "10%"}
     %th{width: "10%"}
     %th{width: "11%"}
 
-  = link_to t('model.new_todo'), new_my_list_todo_path(@list), class: 'icon-plus-circled'
   - @todos.each do |todo|
     %tr
+      %td= todo.position
       %td= todo.progress_state
       %td.icon-progress-2= todo.name
       %td= link_to t('actions.show'), my_todo_path(todo), class: 'icon-info-circled'
       %td= link_to t('actions.edit'), edit_my_todo_path(todo), class: 'icon-edit-circled'
       %td= link_to t('actions.delete'), my_todo_path(todo), :method => :delete, :data => { :confirm => t('confirmations.deletion', model: t('model.list'), name: todo.name) }, class: 'icon-delete-circled'
+  %tr
+    %td{colspan: 6}= link_to t('model.new_todo'), new_my_list_todo_path(@list), class: 'icon-plus-circled'
 
 
-= link_to 'edit', edit_my_list_path(@list)
-\|
-= link_to 'back', my_lists_path
+
