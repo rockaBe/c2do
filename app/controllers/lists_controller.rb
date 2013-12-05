@@ -4,7 +4,7 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    @lists = current_user.lists.all
+    @lists = current_user.lists.load
     @assigned_todos = current_user.assigned_todos.count
     @created_todos  = current_user.created_todos.count
   end

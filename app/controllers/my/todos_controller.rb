@@ -6,7 +6,7 @@ class My::TodosController < ApplicationController
   # GET /todos
   # GET /todos.json
   def index
-    @todos = @list.todos.includes(:tasks).all
+    @todos = @list.todos.includes(:tasks).load
   end
 
   # GET /todos/1
