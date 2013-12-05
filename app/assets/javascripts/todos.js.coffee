@@ -3,6 +3,12 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-	$('.with-picker').on "click", ->
-		console.log "IM IN IT"
-		$(this).datetimepicker()
+	$("input[id$='due_at']").each (index) -> 
+		console.log $(this).val()
+		$(this).fdatetimepicker
+			closeButton: true
+			startDate: "2013-12-12 22:00"
+		
+	$("input[id$='due_at']").on "click", ->
+		console.log $(this).val()
+		$(this).fdatetimepicker 'show'

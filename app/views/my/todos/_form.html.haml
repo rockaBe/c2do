@@ -1,9 +1,23 @@
-= simple_form_for([:my, @list, @todo]) do |f|
-  = f.error_notification
+- if @todo.new_record?
 
-  .form-inputs
-    = f.input :name
-    = f.input :due_at, class: "with-picker"
+  = simple_form_for([:my, @list, @todo]) do |f|
+    = f.error_notification
 
-  .form-actions
-    = f.button :submit
+    .form-inputs
+      = f.input :name
+      = f.input :due_at, as: :string, input_html: {data: {start_date: @todo.due_at || 4.hours.from_now }}
+
+    .form-actions
+      = f.button :submit
+
+- else
+
+  = simple_form_for([:my, @todo]) do |f|
+    = f.error_notification
+
+    .form-inputs
+      = f.input :name
+      = f.input :due_at, , as: :string, input_html: {data: {start_date: @todo.due_at || 4.hours.from_now }}
+
+    .form-actions
+      = f.button :submit

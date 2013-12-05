@@ -1,15 +1,33 @@
-= simple_form_for(@task) do |f|
-  = f.error_notification
+- if @task.new_record?
+  = simple_form_for([:my, @todo, @task]) do |f|
+    = f.error_notification
+  
+    .form-inputs
+      = f.input :name
+      = f.input :position
+      = f.input :due_at, as: :string, input_html: {data: {start_date: @task.due_at || 4.hours.from_now }}
+      = f.input :shared_state
+      = f.input :progress_state
+      = f.input :shared_state
+      = f.input :predue_at
+      = f.input :overdue_at, as: :string, input_html: {data: {start_date: @task.overdue_at || 4.hours.from_now}}
+  
+    .form-actions
+      = f.button :submit
 
-  .form-inputs
-    = f.input :name
-    = f.input :position
-    = f.input :due_at
-    = f.input :shared_state
-    = f.input :progress_state
-    = f.input :shared_state
-    = f.input :predue_at
-    = f.input :overdue_at
-
-  .form-actions
-    = f.button :submit
+- else
+  = simple_form_for([:my, @task]) do |f|
+    = f.error_notification
+  
+    .form-inputs
+      = f.input :name
+      = f.input :position
+      = f.input :due_at, as: :string, input_html: {data: {start_date: @task.due_at || 4.hours.from_now}}
+      = f.input :shared_state
+      = f.input :progress_state
+      = f.input :shared_state
+      = f.input :predue_at
+      = f.input :overdue_at, as: :string, input_html: {data: {start_date: @task.overdue_at || 4.hours.from_now}}
+  
+    .form-actions
+      = f.button :submit
