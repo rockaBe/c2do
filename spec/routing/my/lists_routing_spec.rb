@@ -7,10 +7,6 @@ describe My::ListsController do
       @user = FactoryGirl.create(:user)
     end
 
-    # pay attention to shallow routing
-    # #index, #new, #create are nested under user, the others aren't
-
-    # nested
     it "routes to #index" do  
       get("/my/lists").should route_to("my/lists#index")
     end
@@ -23,8 +19,10 @@ describe My::ListsController do
       post("/my/lists").should route_to("my/lists#create")
     end
 
+    it "routes to #sort" do
+      post("/my/lists/sort").should route_to("my/lists#sort")
+    end
 
-    # unnested
     it "routes to #show" do
       get("/my/lists/1").should route_to("my/lists#show", id: "1")
     end

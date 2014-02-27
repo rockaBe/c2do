@@ -5,7 +5,7 @@ class My::ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    @lists = current_user.lists
+    @lists = current_user.lists.rank(:position)
     @assigned_todos = current_user.assigned_todos.count
     @created_todos  = current_user.created_todos.count
   end
@@ -55,6 +55,15 @@ class My::ListsController < ApplicationController
       end
     end
   end
+
+  # POST lists([:ids])
+  def sort
+    params[:list].each_with_index do |id, index|
+      List.where(id: id).update_all({position: index+1})
+    end
+    render nothing: true
+  end
+
 
   # DELETE /lists/1
   # DELETE /lists/1.json

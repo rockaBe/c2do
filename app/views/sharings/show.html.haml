@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @sharing.user_id
+%p
+  %b Recipient:
+  = @sharing.recipient_id
+%p
+  %b Description:
+  = @sharing.description
+%p
+  %b Shareable:
+  = @sharing.shareable_id
+
+= link_to 'Edit', edit_sharing_path(@sharing)
+\|
+= link_to 'Back', sharings_path

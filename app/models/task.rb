@@ -6,8 +6,9 @@ class Task < ActiveRecord::Base
 	
 	delegate :list, to: :todo, allow_nil: true
 
-	validates_presence_of :name, :creator_user
+	validates_presence_of :name, :creator_user_id
+	validates :position, numericality: { greater_than_or_equal_to: 0 }
 
-	default_scope { order( position: :asc ) }
-
+  include RankedModel
+  ranks :position
 end

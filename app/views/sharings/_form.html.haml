@@ -1,0 +1,11 @@
+= simple_form_for(@sharing) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :user_id
+    = f.input :recipient_id
+    = f.input :description
+    = f.input :shareable_id
+
+  .form-actions
+    = f.button :submit

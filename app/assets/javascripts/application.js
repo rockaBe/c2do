@@ -12,11 +12,24 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.sortable
+//= require jquery.ui.draggable
 //= require jquery.turbolinks
 //= require turbolinks
 //= require foundation
 //= require_tree .
 //= require foundation-datetimepicker
 
-$(function(){ $(document).foundation(); });
+$(function(){ 
+	$(document).foundation(); 
+	if ($('#list-entries').length > 0){
+		$('#list-entries').sortable({
+			axis: 'y', 
+			handle: '.handle',
+			update: function(e, ui){
+				$.post($(this).data('update-url'), $(this).sortable('serialize'));
+			}
+		});
+	}
+});
 

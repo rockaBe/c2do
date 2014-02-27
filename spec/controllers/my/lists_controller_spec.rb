@@ -79,6 +79,14 @@ describe My::ListsController do
     end
   end
 
+  describe "POST sort" do
+    it "updates the relevant position fields" do
+      5.times { FactoryGirl.create(:list) }
+      post :sort, { :list => [1,4,3,2,5] }, valid_session
+      response.should be_success 
+    end
+  end
+
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested list" do

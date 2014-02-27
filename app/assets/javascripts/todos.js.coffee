@@ -4,10 +4,9 @@
 
 $ ->
 	$("input[id$='due_at']").each (index) -> 
-		console.log $(this).val()
+		console.log "$(this).data('date-startdate').valueOf()", $(this).data('date-startdate').valueOf()
 		$(this).fdatetimepicker
 			closeButton: true
-			startDate: "2013-12-12 22:00"
 		
 	$("input[id$='due_at']").on "click", ->
 		console.log $(this).val()

@@ -13,9 +13,6 @@
  *= require foundation_and_overrides
  
  */
-li {
-	list-style-type: none;
-}
 
 th {
 	text-align: left;
@@ -24,3 +21,17 @@ th {
 .app-logo {
 	padding-right: rem-calc(15);
 }
+
+// #lists-list .row { max-width: 100% }
+*[id^="list_"] {
+	font-size: 175%;
+	line-height: 140%;
+}
+
+li .handle { 
+  padding-top: rem-calc(15); 
+  cursor: move;
+}
+
+// list entries
+// li.list-entry div, li.header div { display: inline !important; }

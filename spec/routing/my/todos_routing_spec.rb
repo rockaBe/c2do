@@ -44,6 +44,10 @@ describe My::TodosController do
         delete("/my/todos/1").should route_to("my/todos#destroy", :id => "1")
       end
 
+      it "routes to #update_state" do
+        put("/my/todos/1/update_state").should route_to("my/todos#update_state", :id => "1")
+      end
+
     end
 
   end

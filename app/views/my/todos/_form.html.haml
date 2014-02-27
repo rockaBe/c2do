@@ -5,7 +5,7 @@
 
     .form-inputs
       = f.input :name
-      = f.input :due_at, as: :string, input_html: {data: {start_date: @todo.due_at || 4.hours.from_now }}
+      = f.input :due_at, as: :string, input_html: {data: {"date-startdate" => 3.days.ago }}
 
     .form-actions
       = f.button :submit
@@ -17,7 +17,7 @@
 
     .form-inputs
       = f.input :name
-      = f.input :due_at, , as: :string, input_html: {data: {start_date: @todo.due_at || 4.hours.from_now }}
+      = f.input :due_at, as: :string, input_html: {data: {"date-startdate" => 3.days.ago }}
 
     .form-actions
       = f.button :submit

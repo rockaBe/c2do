@@ -6,7 +6,7 @@ FactoryGirl.define do
     position 1
 
     shared_state "none"
-    progress_state "none"
+    # progress_state "none"
     
     predue_at "2013-11-19 15:58:24"
     due_at "2013-11-20 15:58:24"

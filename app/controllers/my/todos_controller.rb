@@ -1,7 +1,11 @@
 class My::TodosController < ApplicationController
+ 
+  include Concerns::State
+
+  before_action :set_resource, only: [:update_state]
   before_action :set_todo, only: [:show, :edit, :update, :destroy]
   before_action :set_list, only: [:index, :new, :create]
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
   # GET /todos
   # GET /todos.json
@@ -75,11 +79,19 @@ class My::TodosController < ApplicationController
       @list = List.find(params[:list_id])
     end
 
+    # to have access to the @resource instance variable in concerns
+    def set_resource
+      Logger.new(STDOUT).info(">>>>>>>>>>>>> request.parameters:: #{request.parameters}")
+      @resource = Todo.includes(:list).find(params[:id])
+      Logger.new(STDOUT).info(">>>>>>>>>>>>> request.parameters:: #{request.parameters}")
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_params
       if request.method.to_s == "POST"
         params[:todo][:list_id] = params[:list_id].present? ? params[:list_id] : @list.try(:id).to_s
-        params[:todo][:creator_user_id] = current_user.id if current_user.present?
+        params[:todo][:creator_user_id] = current_user.id if current_user.present? 
+        params[:todo][:position] = @list.todos.maximum(:position)+1 unless params[:todo][:position]
       end
       params.require(:todo).permit(:name, :position, :list_id, :creator_user_id, :assigned_user_id, :due_at, :predue_at, :overdue_at, :shared_state, :progress_state)
     end

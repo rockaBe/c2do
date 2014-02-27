@@ -5,8 +5,8 @@ FactoryGirl.define do
     name "MyString"
     position 1
     
-    shared_state "MyString"
-    progress_state "MyString"
+    shared_state "none"
+    # progress_state :open
     
     predue_at "2013-11-19 15:58:24"
     due_at "2013-11-20 15:58:24"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120035452) do
+ActiveRecord::Schema.define(version: 20131206201336) do
 
   create_table "list_subscriptions", force: true do |t|
     t.integer  "list_id"
@@ -39,6 +39,20 @@ ActiveRecord::Schema.define(version: 20131120035452) do
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
+  create_table "sharings", force: true do |t|
+    t.text     "description"
+    t.integer  "shareable_id"
+    t.string   "shareable_type"
+    t.integer  "user_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sharings", ["recipient_id"], name: "index_sharings_on_recipient_id", using: :btree
+  add_index "sharings", ["user_id", "shareable_type", "shareable_id"], name: "index_sharings_on_user_id_and_shareable_type_and_shareable_id", using: :btree
+  add_index "sharings", ["user_id"], name: "index_sharings_on_user_id", using: :btree
+
   create_table "tasks", force: true do |t|
     t.string   "name"
     t.integer  "position"
@@ -52,6 +66,7 @@ ActiveRecord::Schema.define(version: 20131120035452) do
     t.integer  "todo_id",          null: false
     t.integer  "creator_user_id",  null: false
     t.integer  "assigned_user_id"
+    t.text     "description"
   end
 
   add_index "tasks", ["id", "assigned_user_id", "todo_id"], name: "todo_tasks_by_assigned_user", using: :btree
@@ -59,6 +74,8 @@ ActiveRecord::Schema.define(version: 20131120035452) do
   add_index "tasks", ["id", "creator_user_id", "todo_id"], name: "todo_tasks_by_creator", using: :btree
   add_index "tasks", ["id", "creator_user_id"], name: "tasks_by_creator", using: :btree
   add_index "tasks", ["id", "todo_id"], name: "tasks_by_todo_id", using: :btree
+  add_index "tasks", ["todo_id", "description"], name: "index_tasks_on_todo_id_and_description", length: {"todo_id"=>nil, "description"=>15}, using: :btree
+  add_index "tasks", ["todo_id"], name: "index_tasks_on_todo_id", using: :btree
 
   create_table "todos", force: true do |t|
     t.string   "name"
@@ -69,16 +86,19 @@ ActiveRecord::Schema.define(version: 20131120035452) do
     t.datetime "predue_at"
     t.datetime "overdue_at"
     t.string   "shared_state",     default: "none"
-    t.string   "progress_state",   default: "none"
+    t.string   "progress_state"
     t.integer  "list_id",                           null: false
     t.integer  "creator_user_id",                   null: false
     t.integer  "assigned_user_id"
+    t.text     "description"
   end
 
   add_index "todos", ["assigned_user_id", "list_id"], name: "list_todos_by_assigned_user_id", using: :btree
   add_index "todos", ["assigned_user_id"], name: "index_todos_on_assigned_user_id", using: :btree
   add_index "todos", ["creator_user_id", "list_id"], name: "list_todos_by_creator_user_id", using: :btree
   add_index "todos", ["creator_user_id"], name: "index_todos_on_creator_user_id", using: :btree
+  add_index "todos", ["list_id", "description"], name: "index_todos_on_list_id_and_description", length: {"list_id"=>nil, "description"=>15}, using: :btree
+  add_index "todos", ["list_id"], name: "index_todos_on_list_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

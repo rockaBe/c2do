@@ -164,11 +164,11 @@
 	padding:0;
 	display:none}
  
-.datepicker td.old,.datepicker td.new {
+.datetimepicker td.old,.datepicker td.new {
 	color:#999
 }
-.datepicker td.day.disabled { 
-	color:#eee
+.datetimepicker .disabled { 
+	color:#ddd
 }
 
 /* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */

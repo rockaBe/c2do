@@ -9,7 +9,7 @@
 
 - todo ||= @todo
 %tr
-	%td= "#{todo.name} (#{@todo.tasks.size})"
+	%td= "#{todo.name} (#{todo.tasks.size})"
 	%td= link_to 'Show', my_todo_path(todo) unless do_not_display_show_link
 	%td= link_to 'Edit', edit_my_todo_path(todo), class: "icon-edit-circled"
 	%td= link_to 'Destroy', my_todo_path(todo), method: :delete, data: { :confirm => 'Are you sure?' }, class: "icon-delete-circled"

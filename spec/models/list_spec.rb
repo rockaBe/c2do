@@ -5,7 +5,7 @@ describe List do
   # attribute validations
   it { should validate_presence_of :name }
   it { should validate_presence_of :position }
-  it { should validate_numericality_of :position }
+  it { should validate_numericality_of(:position).is_greater_than_or_equal_to(0) }
 
   # association validations
   it { should have_many(:list_subscriptions) }

@@ -1,20 +1,16 @@
-%h1 Listing lists
+%h1 Your active C-2Do lists
 
-%table.large-12
-  %tr
-    %th{width: "60%"} Name
-    %th{width: "13%"}
-    %th{width: "13%"}
-    %th{width: "13%"}
+.small-12#lists-list
+  %h3.show-for-large-up= "See your lists, unfold to see todo's and their status"
+  %ul.no-bullet.row#list-entries{data: { "update-url" => sort_my_lists_path }}
+    - @lists.each do |list|
+      = content_tag_for(:li, list, class: "row display", data:{"new-todo-url" => new_my_list_todo_path(list) }) do
+        .small-1.handle.columns.icon-th
+        .small-6.columns.name= "#{list.name} (#{list.todos.size})"
+        .small-5.columns.actions
+          .row.display
+            .small-4.columns= link_to "", my_list_path(list, format: :json), remote: true, class: 'icon-info-circled'
+            .small-4.columns= link_to "", edit_my_list_path(list), class: 'icon-edit-circled'
+            .small-4.columns= link_to "", my_list_path(list), :method => :delete, :data => { :confirm => t('confirmations.deletion', model: t('model.list'), name: list.name) }, class: 'icon-delete-circled'
 
-  - @lists.each do |list|
-    %tr
-      %td.icon-progress-2= list.name
-      %td= link_to t('actions.show'), my_list_path(list), class: 'icon-info-circled'
-      %td= link_to t('actions.edit'), edit_my_list_path(list), class: 'icon-edit-circled'
-      %td= link_to t('actions.delete'), my_list_path(list), :method => :delete, :data => { :confirm => t('confirmations.deletion', model: t('model.list'), name: list.name) }, class: 'icon-delete-circled'
-
-%br
-
-= link_to t('model.new_list'), new_my_list_path, class: 'button radius'
-
+  .small-12.new_entry.columns= link_to t('model.new_list'), new_my_list_path, class: 'button radius'
