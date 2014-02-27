@@ -278,7 +278,7 @@ DEPENDENCIES
   cancan
   capybara
   coffee-rails (~> 4.0.0)
-  compass-rails (~> 2.0.alpha.0)
+  compass-rails
   cucumber-rails
   database_cleaner (= 1.0.1)
   devise
